@@ -1,0 +1,37 @@
+# Model & Inference Configuration
+
+model:
+  backbone: "resnet50" # choices: resnet50, mobilenet_v3, efficientnet_b0
+  input_dim: 2048      # 2048 for resnet50, 960 for mobilenet_v3, 1280 for efficientnet_b0
+  hidden_dim: 256
+  num_classes: 5
+  num_layers: 2
+  dropout: 0.3
+  bidirectional: true
+
+feature_extraction:
+  frame_skip: 5
+  max_frames: 100
+  batch_size: 32
+
+training:
+  epochs: 30
+  batch_size: 16
+  lr: 0.0003
+  weight_decay: 0.0001
+  val_split: 0.2
+  checkpoint_dir: "checkpoints"
+
+realtime:
+  window_size: 32
+  frame_interval: 3
+  confidence_threshold: 0.75
+  alert_cooldown_seconds: 60
+  save_dir: "detected_frames"
+
+classes:
+  0: "abuse"
+  1: "assault"
+  2: "vandalism"
+  3: "robbery"
+  4: "burglary"

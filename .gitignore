@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Environment Variables & Secrets
+.env
+*.local
+
+# Datasets & Processed Features
+*.mp4
+*.avi
+*.mov
+processed_frames/
+detected_frames/
+raw_videos/
+
+# Checkpoints
+checkpoints/
+
+# Jupyter & IDEs
+.ipynb_checkpoints
+.vscode/
+.idea/
+.DS_Store
