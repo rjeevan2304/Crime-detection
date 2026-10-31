@@ -189,7 +189,7 @@ class RealTimeCrimeDetector:
 def main():
     parser = argparse.ArgumentParser(description="Real-Time Crime Detection")
     parser.add_argument("--source", type=str, default="0", help="Video file path, RTSP stream URL, or webcam ID")
-    parser.add_argument("--checkpoint", type=str, default="crime_lstm.pth", help="Path to model weights")
+    parser.add_argument("--checkpoint", type=str, default="weights/crime_lstm.pth", help="Path to model weights")
     parser.add_argument("--backbone", type=str, default="resnet50", choices=["resnet50", "mobilenet_v3", "efficientnet_b0"])
     parser.add_argument("--threshold", type=float, default=0.70, help="Confidence threshold for alerting")
     parser.add_argument("--window-size", type=int, default=32, help="Temporal sliding window size")

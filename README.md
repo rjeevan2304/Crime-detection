@@ -5,8 +5,8 @@ Automated real-time criminal activity detection and alerting pipeline using Deep
 ---
 
 ## 📌 Documentation & Reports
-- [Project Brief (PDF)](https://github.com/user-attachments/files/21161407/Brief.pdf)
-- [Detailed Technical Report (PDF)](https://github.com/user-attachments/files/21161414/Report.in.detail.pdf)
+- [Project Report (PDF)](docs/project_report.pdf)
+- [Project Presentation Poster (PDF)](docs/project_poster.pdf)
 
 ---
 
@@ -38,11 +38,16 @@ Crime-detection/
 │   ├── train.py               # Training loop with validation & checkpointing
 │   ├── alert_service.py       # Asynchronous Twilio SMS alerting with cooldown
 │   └── realtime_detector.py   # Live sliding-window CCTV / stream detector
+├── notebooks/
+│   └── exploration_and_demo.ipynb  # Interactive experiments & step-by-step walkthrough
+├── docs/
+│   ├── project_report.pdf     # Academic project report
+│   └── project_poster.pdf     # Project presentation poster
+├── weights/
+│   └── crime_lstm.pth         # Pretrained baseline model weights
 ├── .env.example               # Environment variable template for API keys
 ├── .gitignore
 ├── requirements.txt           # Project dependencies
-├── code.ipynb                 # Interactive notebook with clean demonstrations
-├── crime_lstm.pth             # Pretrained baseline model weights
 └── README.md
 ```
 
@@ -108,13 +113,13 @@ python -m src.train \
 Run real-time inference on a webcam, video file, or RTSP network camera stream:
 ```bash
 # Webcam stream
-python -m src.realtime_detector --source 0 --checkpoint crime_lstm.pth
+python -m src.realtime_detector --source 0 --checkpoint weights/crime_lstm.pth
 
 # Video file
-python -m src.realtime_detector --source test_video.mp4 --threshold 0.75
+python -m src.realtime_detector --source test_video.mp4 --checkpoint weights/crime_lstm.pth --threshold 0.75
 
 # Headless server (no GUI window)
-python -m src.realtime_detector --source rtsp://camera-ip:554/live --no-display
+python -m src.realtime_detector --source rtsp://camera-ip:554/live --checkpoint weights/crime_lstm.pth --no-display
 ```
 
 ---
